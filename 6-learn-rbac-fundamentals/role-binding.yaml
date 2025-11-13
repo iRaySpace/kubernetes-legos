@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: junior-role-binding
+  namespace: production
+subjects:
+- kind: ServiceAccount
+  name: junior
+  namespace: production
+roleRef:
+  kind: Role
+  name: junior-role
+  apiGroup: rbac.authorization.k8s.io
