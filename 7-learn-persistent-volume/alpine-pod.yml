@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-pod
+spec:
+  volumes:
+    - name: persistent-volume-storage
+      persistentVolumeClaim:
+        claimName: persistent-volume-claim
+  containers:
+    - name: alpine-pod
+      image: alpine
+      command: ["/bin/sh", "-c", "sleep 3600"]
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: persistent-volume-storage
